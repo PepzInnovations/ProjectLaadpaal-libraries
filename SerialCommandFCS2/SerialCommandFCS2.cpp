@@ -82,7 +82,10 @@ char *SerialCommand::next() {
 }
 
 int SerialCommand::returncs(char* outStr) {
-  	String str1 = String(totaal%256, HEX);
+  	String str1 = "";
+  	if(totaal%256 < 16)
+  		str1 += '0';
+  	str1 += String(totaal%256, HEX);
 
   	if(str1 == cs)
   		return 1;
